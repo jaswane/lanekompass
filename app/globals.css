@@ -1,0 +1,324 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* -----------------------------------------------------------
+ * Lånekompass.no — designsystem
+ * Rolig, seriøst, tillitsbasert. En trygg norsk veileder.
+ * Ikke aggressiv fintech/låneside. God lesbarhet, luft, ro.
+ * --------------------------------------------------------- */
+
+:root {
+  --color-bg: 247 244 237;          /* #F7F4ED — varm papir/offwhite */
+  --color-surface: 255 255 255;     /* #FFFFFF */
+  --color-ink: 24 31 43;            /* #181F2B — dyp ro */
+  --color-muted: 92 102 114;        /* #5C6672 */
+  --color-line: 226 222 213;        /* #E2DED5 */
+  --color-accent: 26 58 92;         /* #1A3A5C — dyp blå (hovedfarge) */
+  --color-accent-soft: 218 227 238; /* #DAE3EE */
+  --color-green: 47 107 90;         /* #2F6B5A — dempet grønn (trygg sekundær) */
+  --color-green-soft: 219 233 226;  /* #DBE9E2 */
+  --color-warm: 176 122 66;         /* #B07A42 — varm oker (beige-aksent) */
+  --color-warm-soft: 244 235 222;   /* #F4EBDE — beige innerflate */
+  --color-warn: 146 110 20;         /* #926E14 — gul/amber tekst på advarsel */
+  --color-warn-soft: 250 241 211;   /* #FAF1D3 — forsiktig gul */
+  --color-caution: 168 92 58;       /* #A85C3A — varsom terrakotta (alvor) */
+  --color-caution-soft: 246 232 224;/* #F6E8E0 */
+}
+
+.dark {
+  --color-bg: 18 22 30;
+  --color-surface: 26 32 43;
+  --color-ink: 230 232 228;
+  --color-muted: 156 165 172;
+  --color-line: 46 54 64;
+  --color-accent: 130 176 220;
+  --color-accent-soft: 30 46 64;
+  --color-green: 122 184 162;
+  --color-green-soft: 30 48 42;
+  --color-warm: 214 170 118;
+  --color-warm-soft: 44 38 30;
+  --color-warn: 224 190 110;
+  --color-warn-soft: 48 42 26;
+  --color-caution: 214 142 104;
+  --color-caution-soft: 48 36 30;
+}
+
+html,
+body {
+  background-color: rgb(var(--color-bg));
+  color: rgb(var(--color-ink));
+}
+
+body {
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.font-display {
+  font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: -0.02em;
+}
+
+/* Stor, moderne produkt-overskrift — Lånekompass sin egen identitet. */
+.font-hero {
+  font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.02;
+}
+
+/* -----------------------------------------------------------
+ * Containere
+ * --------------------------------------------------------- */
+
+.site-container {
+  margin-inline: auto;
+  padding-inline: 1rem;
+  max-width: 64rem;
+}
+
+.narrow-container {
+  margin-inline: auto;
+  padding-inline: 1rem;
+  max-width: 44rem;
+}
+
+.wide-container {
+  margin-inline: auto;
+  padding-inline: 1rem;
+  max-width: 80rem; /* ~max-w-7xl */
+}
+
+@media (min-width: 640px) {
+  .site-container,
+  .narrow-container,
+  .wide-container {
+    padding-inline: 1.5rem;
+  }
+}
+
+/* -----------------------------------------------------------
+ * Kort
+ * --------------------------------------------------------- */
+
+.card {
+  background-color: rgb(var(--color-surface));
+  border: 1px solid rgb(var(--color-line) / 0.9);
+  border-radius: 20px;
+  box-shadow: 0 1px 2px rgb(26 58 92 / 0.04), 0 6px 20px rgb(26 58 92 / 0.07);
+}
+
+.dark .card {
+  box-shadow: 0 1px 1px rgb(0 0 0 / 0.2), 0 6px 18px rgb(0 0 0 / 0.32);
+}
+
+/* Løftet kort — Startpakken/hovedvisual. */
+.card-lift {
+  background-color: rgb(var(--color-surface));
+  border: 1px solid rgb(var(--color-line) / 0.8);
+  border-radius: 28px;
+  box-shadow:
+    0 2px 4px rgb(26 58 92 / 0.05),
+    0 18px 50px -12px rgb(26 58 92 / 0.22);
+}
+
+.dark .card-lift {
+  box-shadow: 0 2px 6px rgb(0 0 0 / 0.3), 0 22px 60px -12px rgb(0 0 0 / 0.5);
+}
+
+/* Beige/papir innerflate i Startpakken. */
+.paper-inset {
+  background-color: rgb(var(--color-warm-soft) / 0.7);
+  border: 1px solid rgb(var(--color-warm) / 0.16);
+  border-radius: 22px;
+}
+
+.card-soft {
+  background-color: rgb(var(--color-surface));
+  border: 1px solid rgb(var(--color-line) / 0.7);
+  border-radius: 14px;
+}
+
+.card-row {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid rgb(var(--color-line) / 0.7);
+}
+.card-row:last-child {
+  border-bottom: 0;
+}
+
+/* -----------------------------------------------------------
+ * Hero — rolig
+ * --------------------------------------------------------- */
+
+.hero-soft {
+  position: relative;
+  overflow: hidden;
+  background: rgb(var(--color-bg));
+}
+
+/* Rolige gradient-blobs bak heroen. */
+.hero-blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(70px);
+  opacity: 0.5;
+  pointer-events: none;
+}
+.hero-blob--blue {
+  width: 38rem;
+  height: 38rem;
+  top: -14rem;
+  left: -10rem;
+  background: radial-gradient(circle, rgb(var(--color-accent) / 0.28), transparent 65%);
+}
+.hero-blob--green {
+  width: 30rem;
+  height: 30rem;
+  top: 2rem;
+  right: -8rem;
+  background: radial-gradient(circle, rgb(var(--color-green) / 0.22), transparent 65%);
+}
+.hero-blob--warm {
+  width: 26rem;
+  height: 26rem;
+  bottom: -12rem;
+  left: 28%;
+  background: radial-gradient(circle, rgb(var(--color-warm) / 0.16), transparent 65%);
+}
+
+/* -----------------------------------------------------------
+ * Chips og knapper
+ * --------------------------------------------------------- */
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.85rem;
+  border: 1px solid rgb(var(--color-line));
+  border-radius: 999px;
+  background: rgb(var(--color-surface));
+  color: rgb(var(--color-ink));
+  font-size: 0.875rem;
+  transition: border-color 150ms ease, background-color 150ms ease;
+}
+.chip:hover {
+  border-color: rgb(var(--color-accent));
+  background-color: rgb(var(--color-accent) / 0.06);
+}
+
+.chip-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 600;
+  background: rgb(var(--color-accent-soft));
+  color: rgb(var(--color-accent));
+}
+
+.btn-primary {
+  background-color: rgb(var(--color-accent));
+  color: #ffffff;
+  border-radius: 999px;
+  padding: 0.7rem 1.3rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: filter 150ms ease, transform 80ms ease;
+}
+.btn-primary:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+
+.btn-lg {
+  padding: 0.95rem 1.6rem;
+  font-size: 1.05rem;
+}
+
+.btn-ghost {
+  border: 1.5px solid rgb(var(--color-line));
+  color: rgb(var(--color-ink));
+  border-radius: 999px;
+  padding: 0.6rem 1.15rem;
+  font-weight: 500;
+  background: transparent;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: border-color 150ms ease;
+}
+.btn-ghost:hover {
+  border-color: rgb(var(--color-accent));
+}
+
+/* -----------------------------------------------------------
+ * Felt
+ * --------------------------------------------------------- */
+
+.field {
+  display: block;
+  width: 100%;
+  border: 1.5px solid rgb(var(--color-line));
+  border-radius: 12px;
+  background: rgb(var(--color-surface));
+  color: rgb(var(--color-ink));
+  padding: 0.65rem 0.85rem;
+  font-size: 1rem;
+}
+.field:focus {
+  outline: 2px solid rgb(var(--color-accent));
+  outline-offset: 1px;
+  border-color: rgb(var(--color-accent));
+}
+
+.field-label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgb(var(--color-muted));
+}
+
+/* -----------------------------------------------------------
+ * Lenker i brødtekst
+ * --------------------------------------------------------- */
+
+.prose-soft a {
+  color: rgb(var(--color-accent));
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1.5px;
+}
+.prose-soft a:hover {
+  filter: brightness(1.1);
+}
+
+/* -----------------------------------------------------------
+ * Store tall (kalkulator-resultater)
+ * --------------------------------------------------------- */
+
+.big-number {
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  font-size: clamp(1.8rem, 6vw, 2.75rem);
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}

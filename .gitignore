@@ -26,3 +26,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# atomic-write temp files (f.eks. globals.css.tmp.xxxx)
+*.tmp.*

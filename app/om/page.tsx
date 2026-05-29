@@ -95,7 +95,8 @@ export default function OmPage() {
           >
             {SITE.company.name}
           </a>
-          . Har du spørsmål eller innspill, kan du kontakte oss på{" "}
+          . Har du spørsmål eller innspill om selve nettsiden, ikke
+          privatøkonomi, kan du kontakte oss på{" "}
           <a href={`mailto:${SITE.contactEmail}`}>{SITE.contactEmail}</a>.
         </p>
       </div>

@@ -84,9 +84,9 @@ export default function AnnonserOgSamarbeidPage() {
           Kontakt
         </h2>
         <p>
-          Vil du diskutere et mulig samarbeid? Ta kontakt på{" "}
-          <a href={`mailto:${SITE.contactEmail}`}>{SITE.contactEmail}</a>.
-          Lånekompass.no er et prosjekt fra {SITE.company.name}.
+          Vil du diskutere et mulig samarbeid? Du finner kontaktinformasjon på{" "}
+          <a href="/om">Om-siden</a>. Lånekompass.no er et prosjekt fra{" "}
+          {SITE.company.name}.
         </p>
       </div>
 

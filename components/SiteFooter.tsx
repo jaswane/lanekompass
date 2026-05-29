@@ -7,6 +7,7 @@ const COLUMNS = [
     items: [
       { href: "/rydd-okonomien", label: "Rydd økonomien på 7 steg" },
       { href: "/hvor-finner-du-tallene", label: "Hvor finner du tallene?" },
+      { href: "/unngaa-lan", label: "Slik kan du unngå å låne" },
       { href: "/verktoy", label: "Gratis arbeidsark" },
     ],
   },
@@ -15,7 +16,7 @@ const COLUMNS = [
     items: [
       { href: "/kalkulator/gjeldsoversikt", label: "Gjeldsoversikt" },
       { href: "/kalkulator/refinansiering", label: "Refinansiering" },
-      { href: "/verktoy/nar-bor-du-ta-tak", label: "Når bør du ta tak?" },
+      { href: "/verktoy/nar-bor-du-ta-tak", label: "Når bør du ta tak i økonomien?" },
     ],
   },
   {
@@ -59,11 +60,11 @@ export function SiteFooter({ currentYear }: { currentYear: number }) {
 
       <div className="border-t border-line">
         <div className="site-container py-5">
-          <p className="text-xs text-muted leading-relaxed max-w-3xl">
+          <p className="text-xs text-muted leading-relaxed max-w-3xl mx-auto text-center">
             Trenger du å snakke med noen om gjeld? NAV tilbyr gratis økonomi- og
-            gjeldsrådgivning på telefon{" "}
+            gjeldsveiledning på telefon{" "}
             <a
-              href="https://www.nav.no/okonomi-og-gjeldsradgivning"
+              href="https://www.nav.no/okonomi-gjeld"
               target="_blank"
               rel="noopener noreferrer"
               className="underline underline-offset-4 hover:text-accent"

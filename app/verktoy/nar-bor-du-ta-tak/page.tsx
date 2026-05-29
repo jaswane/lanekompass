@@ -8,16 +8,16 @@ import { SITE } from "@/lib/site";
 import { webPageSchema, breadcrumbSchema } from "@/lib/schema";
 
 export const metadata = pageMetadata({
-  title: "Når bør du ta tak? — digital sjekkliste",
+  title: "Når bør du ta tak i økonomien? Sjekkliste for gjeld og regninger",
   description:
-    "En varsom sjekkliste som hjelper deg å kjenne igjen faresignaler i økonomien. Svarene lagres kun i din egen nettleser, aldri hos Lånekompass.no.",
+    "Svar på noen enkle spørsmål om regninger, kredittkort, smålån og økonomisk stress. Sjekklisten lagres bare i nettleseren din, aldri hos Lånekompass.no.",
   path: "/verktoy/nar-bor-du-ta-tak",
 });
 
 const CRUMBS = [
   { name: "Hjem", href: "/" },
   { name: "Verktøy", href: "/verktoy" },
-  { name: "Når bør du ta tak?", href: "/verktoy/nar-bor-du-ta-tak" },
+  { name: "Når bør du ta tak i økonomien?", href: "/verktoy/nar-bor-du-ta-tak" },
 ];
 
 const ITEMS: ChecklistItem[] = [
@@ -59,9 +59,9 @@ export default function NarBorDuTaTakPage() {
         data={[
           webPageSchema({
             url: `${SITE.url}/verktoy/nar-bor-du-ta-tak`,
-            name: "Når bør du ta tak? — digital sjekkliste",
+            name: "Når bør du ta tak i økonomien?",
             description:
-              "Varsom sjekkliste for å kjenne igjen faresignaler i økonomien.",
+              "Enkel sjekkliste for gjeld, regninger og kredittkort. Lagres kun i nettleseren.",
           }),
           breadcrumbSchema(
             CRUMBS.map((c) => ({ name: c.name, url: `${SITE.url}${c.href}` }))
@@ -71,8 +71,8 @@ export default function NarBorDuTaTakPage() {
 
       <PageHeader
         kicker="Digital sjekkliste"
-        title="Når bør du ta tak?"
-        lede="Kryss av det du kjenner deg igjen i. Dette er ikke en test du kan stryke på — det er en rolig måte å se hvor du står. Svarene lagres kun i din egen nettleser."
+        title="Når bør du ta tak i økonomien?"
+        lede="Svar på noen enkle spørsmål om regninger, kredittkort, smålån og økonomisk stress. Sjekklisten lagres bare i nettleseren din."
         crumbs={CRUMBS}
       />
 

@@ -9,7 +9,6 @@ import {
   ClipboardList,
   Calculator,
   Search,
-  Square,
   ExternalLink,
 } from "lucide-react";
 import { JsonLd } from "@/components/JsonLd";
@@ -27,10 +26,10 @@ export const metadata = pageMetadata({
 const TRUST_POINTS = ["Ingen innlogging", "Ingen lagring hos oss", "Offentlige kilder"];
 
 const STARTPACK = [
-  { title: "Inntekt", hint: "Hvor finner du tallet?" },
-  { title: "Faste utgifter", hint: "Sjekk AvtaleGiro og eFaktura" },
-  { title: "Kredittkort", hint: "Se saldo, rente og minstebeløp" },
-  { title: "Smålån", hint: "Finn effektiv rente og gebyrer" },
+  { title: "Inntekt", hint: "Hvor finner du tallet?", href: "/tall" },
+  { title: "Faste utgifter", hint: "Sjekk AvtaleGiro og eFaktura", href: "/tall" },
+  { title: "Kredittkort", hint: "Se saldo, rente og minstebeløp", href: "/gjeld" },
+  { title: "Smålån", hint: "Finn effektiv rente og gebyrer", href: "/gjeld" },
 ];
 
 const STEPS = [
@@ -103,6 +102,25 @@ const FINDOUT = [
   },
 ];
 
+const TERMS = [
+  {
+    term: "Effektiv rente",
+    body: "Den ekte prisen på lånet: renter pluss alle gebyrer, samlet i ett tall. Bruk den når du sammenligner lån.",
+  },
+  {
+    term: "Gebyrer",
+    body: "Småbeløp som etablerings- og termingebyr. De legger seg oppå renten og blir fort mye over tid.",
+  },
+  {
+    term: "Nominell rente",
+    body: "Renten uten gebyrer. Ser lavere ut enn den effektive renten — derfor kan den lure deg.",
+  },
+  {
+    term: "Refinansiering",
+    body: "Å samle flere lån i ett nytt lån. Kan gi lavere månedsbeløp, men sjekk alltid om totalen blir dyrere.",
+  },
+];
+
 const SOURCE_CHIPS = ["NAV", "Forbrukerrådet", "Finanstilsynet", "Gjeldsregisteret"];
 
 const FAQ = [
@@ -146,7 +164,7 @@ export default function HomePage() {
             <div>
               <span className="inline-flex items-center gap-2 rounded-full border border-green/30 bg-green-soft/60 px-4 py-2 text-sm font-medium text-green mb-7">
                 <ShieldCheck aria-hidden className="h-4 w-4" />
-                Regelverkstrygg og kildebasert veiledning
+                Start med oversikt – ikke et nytt lån
               </span>
               <h1 className="font-hero text-5xl sm:text-6xl lg:text-7xl text-ink text-balance">
                 Få oversikt over dyr gjeld før du vurderer neste steg.
@@ -206,23 +224,24 @@ export default function HomePage() {
 
                   <ul className="space-y-3">
                     {STARTPACK.map((it) => (
-                      <li
-                        key={it.title}
-                        className="flex items-center justify-between gap-3 rounded-2xl bg-surface border border-line px-5 py-4 shadow-sm"
-                      >
-                        <span className="min-w-0">
-                          <span className="block font-semibold text-ink text-lg">
-                            {it.title}
+                      <li key={it.title}>
+                        <Link
+                          href={it.href}
+                          className="group flex items-center justify-between gap-3 rounded-2xl bg-surface border border-line px-5 py-4 shadow-sm transition-colors hover:border-accent hover:bg-accent-soft/40"
+                        >
+                          <span className="min-w-0">
+                            <span className="block font-semibold text-ink text-lg">
+                              {it.title}
+                            </span>
+                            <span className="block text-sm text-muted mt-0.5">
+                              {it.hint}
+                            </span>
                           </span>
-                          <span className="block text-sm text-muted mt-0.5">
-                            {it.hint}
-                          </span>
-                        </span>
-                        <Square
-                          aria-hidden
-                          className="h-6 w-6 shrink-0 text-line"
-                          strokeWidth={2}
-                        />
+                          <ArrowRight
+                            aria-hidden
+                            className="h-5 w-5 shrink-0 text-line transition-colors group-hover:text-accent"
+                          />
+                        </Link>
                       </li>
                     ))}
                   </ul>
@@ -243,6 +262,14 @@ export default function HomePage() {
                       </p>
                     </div>
                   </div>
+
+                  <Link
+                    href="/rydd-okonomien"
+                    className="btn-primary w-full justify-center mt-6"
+                  >
+                    Start her
+                    <ArrowRight aria-hidden className="h-5 w-5" />
+                  </Link>
                 </div>
               </div>
             </div>
@@ -291,6 +318,52 @@ export default function HomePage() {
               <p className="mt-3 text-sm text-muted leading-relaxed">{s.body}</p>
             </article>
           ))}
+        </div>
+      </section>
+
+      {/* Lån forklart enkelt */}
+      <section className="wide-container pb-4 sm:pb-8">
+        <div className="max-w-2xl mb-8">
+          <p className="text-sm font-bold uppercase tracking-[0.14em] text-green mb-3">
+            Lån forklart enkelt
+          </p>
+          <h2 className="font-hero text-4xl sm:text-5xl text-ink">
+            Vanskelige ord, forklart på vanlig norsk
+          </h2>
+          <p className="mt-4 text-lg text-muted leading-relaxed">
+            Renter, gebyrer, effektiv rente og refinansiering trenger ikke være
+            vanskelig. Vi forklarer det i klartekst — uten finansprat.
+          </p>
+        </div>
+
+        <dl className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {TERMS.map((t) => (
+            <div key={t.term} className="card p-6">
+              <dt className="font-display font-bold text-lg text-ink tracking-display">
+                {t.term}
+              </dt>
+              <dd className="mt-2 text-sm text-muted leading-relaxed">
+                {t.body}
+              </dd>
+            </div>
+          ))}
+        </dl>
+
+        <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2">
+          <Link
+            href="/hvor-finner-du-tallene"
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:underline underline-offset-4"
+          >
+            Se hvor du finner tallene i din egen økonomi
+            <ArrowRight aria-hidden className="h-4 w-4" />
+          </Link>
+          <Link
+            href="/unngaa-lan"
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:underline underline-offset-4"
+          >
+            Slik kan du unngå å låne
+            <ArrowRight aria-hidden className="h-4 w-4" />
+          </Link>
         </div>
       </section>
 

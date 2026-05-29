@@ -37,7 +37,7 @@ export const SOURCES: Record<string, Source> = {
   nav: {
     id: "nav",
     name: "NAV – økonomi- og gjeldsrådgivning",
-    url: "https://www.nav.no/okonomi-og-gjeldsradgivning",
+    url: "https://www.nav.no/okonomi-gjeld",
     blurb:
       "Gratis økonomi- og gjeldsveiledning. Ring 55 55 33 39 for hjelp hvis du sliter med gjeld.",
   },

@@ -53,7 +53,7 @@ export default function PersonvernPage() {
           Lagring i nettleseren (localStorage)
         </h2>
         <p>
-          Noen verktøy, som sjekklisten «Når bør du ta tak?», husker valgene
+          Noen verktøy, som sjekklisten «Når bør du ta tak i økonomien?», husker valgene
           dine ved hjelp av nettleserens localStorage. Disse dataene blir
           liggende kun på din egen enhet, og du kan når som helst nullstille
           dem eller tømme nettleserdataene dine.
@@ -83,9 +83,9 @@ export default function PersonvernPage() {
           Kontakt
         </h2>
         <p>
-          Har du spørsmål om personvern, kontakt oss på{" "}
-          <a href={`mailto:${SITE.contactEmail}`}>{SITE.contactEmail}</a>.
-          Lånekompass.no er et prosjekt fra {SITE.company.name}.
+          Har du spørsmål om personvern, finner du kontaktinformasjon på{" "}
+          <a href="/om">Om-siden</a>. Lånekompass.no er et prosjekt fra{" "}
+          {SITE.company.name}.
         </p>
 
         <p className="text-sm text-muted">

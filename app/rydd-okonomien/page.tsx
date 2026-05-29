@@ -12,7 +12,7 @@ import { webPageSchema, breadcrumbSchema, howToSchema } from "@/lib/schema";
 export const metadata = pageMetadata({
   title: "Rydd økonomien på 7 steg",
   description:
-    "En rolig, menneskelig guide i 7 steg: finn inntekt og utgifter, lag full gjeldsoversikt, se faresignalene og lag en 30-dagers handlingsplan.",
+    "En rolig, menneskelig guide i 7 steg: finn inntekt og utgifter, lag full gjeldsoversikt, se faresignalene og lag en 7-dagers handlingsplan.",
   path: "/rydd-okonomien",
 });
 
@@ -85,14 +85,14 @@ const STEPS: Step[] = [
     action: { label: "Sammenlign refinansiering", href: "/kalkulator/refinansiering" },
   },
   {
-    title: "Lag 30-dagers handlingsplan",
-    body: "Del opp i små, konkrete steg fordelt over de neste 30 dagene — én ting av gangen. For eksempel: si opp ett abonnement, ring én långiver, sett opp ett fast nedbetalingsbeløp. Små steg som faktisk blir gjort, slår en perfekt plan som aldri starter.",
+    title: "Lag 7-dagers handlingsplan",
+    body: "Del opp i små, konkrete steg — ett om dagen i sju dager. For eksempel: si opp ett abonnement, ring én långiver, sett opp ett fast nedbetalingsbeløp. Små steg som faktisk blir gjort, slår en perfekt plan som aldri starter.",
     whereToFind: [
-      "Uke 1: fullfør oversikten over inntekt, utgifter og gjeld",
-      "Uke 2–3: kutt det enkleste og kontakt långivere ved behov",
-      "Uke 4: sett opp nedbetaling og en fast dato for å sjekke status",
+      "Dag 1–3: før opp inntekt og faste utgifter",
+      "Dag 4–5: lag gjeldsoversikt og se hva som er dyrest",
+      "Dag 6–7: kutt det enkleste, og legg en enkel nedbetalingsplan",
     ],
-    action: { label: "Last ned 30-dagers ryddeplan", href: "/verktoy" },
+    action: { label: "Last ned 7-dagers ryddeplan", href: "/verktoy/7-dagers-ryddeplan-a4" },
   },
 ];
 
@@ -166,6 +166,16 @@ export default function RyddOkonomienPage() {
               Finn tallene dine
               <ArrowRight aria-hidden className="h-4 w-4" />
             </Link>
+            <p className="mt-4 text-sm text-muted">
+              Vurderer du å låne?{" "}
+              <Link
+                href="/unngaa-lan"
+                className="font-semibold text-accent hover:underline underline-offset-4"
+              >
+                Se først om du kan unngå det
+              </Link>
+              .
+            </p>
           </div>
 
           <DisclaimerBox />

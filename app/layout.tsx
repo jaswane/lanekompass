@@ -49,10 +49,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#F8F9F7" },
-    { media: "(prefers-color-scheme: dark)", color: "#12161A" },
-  ],
+  themeColor: "#F7F4ED",
   width: "device-width",
   initialScale: 1,
 };
@@ -64,11 +61,7 @@ export default function RootLayout({
 }) {
   const currentYear = new Date().getFullYear();
   return (
-    <html
-      lang="nb"
-      className={`${inter.variable} ${jakarta.variable}`}
-      suppressHydrationWarning
-    >
+    <html lang="nb" className={`${inter.variable} ${jakarta.variable}`}>
       <head>
         <script
           type="application/ld+json"

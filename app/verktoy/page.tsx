@@ -11,7 +11,7 @@ import { webPageSchema, breadcrumbSchema } from "@/lib/schema";
 export const metadata = pageMetadata({
   title: "Gratis verktøy og arbeidsark",
   description:
-    "Gratis A4-arbeidsark og sjekklister: økonomioversikt, gjeldsoversikt og 30-dagers ryddeplan. Skriv ut fra nettleseren — du trenger ikke oppgi e-post.",
+    "Gratis A4-arbeidsark og sjekklister: økonomioversikt, gjeldsoversikt og 7-dagers ryddeplan. Skriv ut fra nettleseren — du trenger ikke oppgi e-post.",
   path: "/verktoy",
 });
 
@@ -34,10 +34,10 @@ const TOOLS = [
     href: "/verktoy/gjeldsoversikt-a4",
   },
   {
-    title: "30-dagers ryddeplan",
+    title: "7-dagers ryddeplan",
     description:
-      "A4-ark med en rolig ukesplan som deler opp ryddejobben i små, konkrete steg over én måned.",
-    href: "/verktoy/30-dagers-ryddeplan-a4",
+      "A4-ark med en rolig plan som deler opp ryddejobben i ett lite steg om dagen i sju dager.",
+    href: "/verktoy/7-dagers-ryddeplan-a4",
   },
 ];
 
@@ -95,7 +95,7 @@ export default function VerktoyPage() {
             href="/verktoy/nar-bor-du-ta-tak"
             className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:underline underline-offset-4"
           >
-            Åpne sjekklisten «Når bør du ta tak?»
+            Åpne sjekklisten «Når bør du ta tak i økonomien?»
             <ArrowRight aria-hidden className="h-4 w-4" />
           </Link>
         </div>

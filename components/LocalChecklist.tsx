@@ -168,7 +168,7 @@ export function LocalChecklist({
 
           {tier.showNav && (
             <a
-              href="https://www.nav.no/okonomi-og-gjeldsradgivning"
+              href="https://www.nav.no/okonomi-gjeld"
               target="_blank"
               rel="noopener noreferrer"
               className="mt-4 inline-flex items-center gap-2 rounded-xl bg-surface border border-caution/40 px-4 py-3 text-sm text-ink hover:border-caution"

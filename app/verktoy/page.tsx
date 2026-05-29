@@ -11,7 +11,7 @@ import { webPageSchema, breadcrumbSchema } from "@/lib/schema";
 export const metadata = pageMetadata({
   title: "Gratis verktøy og arbeidsark",
   description:
-    "Gratis PDF-er og sjekklister: økonomioversikt, gjeldsoversikt og 30-dagers ryddeplan. Last ned gratis — du trenger ikke oppgi e-post.",
+    "Gratis A4-arbeidsark og sjekklister: økonomioversikt, gjeldsoversikt og 30-dagers ryddeplan. Skriv ut fra nettleseren — du trenger ikke oppgi e-post.",
   path: "/verktoy",
 });
 
@@ -24,20 +24,20 @@ const TOOLS = [
   {
     title: "Økonomioversikt",
     description:
-      "Arbeidsark for å skrive ned inntekt og faste utgifter, slik at du ser hva du har igjen hver måned.",
-    href: "/hvor-finner-du-tallene",
+      "A4-ark for å føre opp inntekt og faste utgifter for hånd, slik at du ser hva du har igjen hver måned.",
+    href: "/verktoy/okonomioversikt-a4",
   },
   {
     title: "Gjeldsoversikt",
     description:
-      "Skjema for å samle alle lån, kredittkort og smålån med restbeløp, rente og månedlig betaling.",
-    href: "/kalkulator/gjeldsoversikt",
+      "A4-ark for å samle alle lån, kredittkort og smålån med restbeløp, effektiv rente og månedlig betaling.",
+    href: "/verktoy/gjeldsoversikt-a4",
   },
   {
     title: "30-dagers ryddeplan",
     description:
-      "En rolig ukesplan som deler opp ryddejobben i små, konkrete steg over én måned.",
-    href: "/rydd-okonomien",
+      "A4-ark med en rolig ukesplan som deler opp ryddejobben i små, konkrete steg over én måned.",
+    href: "/verktoy/30-dagers-ryddeplan-a4",
   },
 ];
 
@@ -61,7 +61,7 @@ export default function VerktoyPage() {
       <PageHeader
         kicker="Gratis arbeidsark"
         title="Verktøy som hjelper deg i gang"
-        lede="Last ned gratis arbeidsark og sjekklister, eller bruk de digitale verktøyene direkte. Alt er gratis — du trenger ikke oppgi e-post."
+        lede="Gratis A4-arbeidsark og sjekklister, eller bruk de digitale verktøyene direkte. Alt er gratis — du trenger ikke oppgi e-post."
         crumbs={CRUMBS}
       />
 
@@ -78,8 +78,9 @@ export default function VerktoyPage() {
         </div>
 
         <p className="text-sm text-muted text-center">
-          PDF-ene er under utarbeiding. I mellomtiden kan du bruke de digitale
-          verktøyene, som fungerer på samme måte og ikke lagrer noe om deg.
+          Arkene kan skrives ut rett fra nettleseren nå, og blir senere
+          tilgjengelige som nedlastbar PDF. Du trenger aldri å oppgi e-post, og
+          ingenting du skriver på arket sendes til oss.
         </p>
 
         <div className="card p-6 sm:p-7">

@@ -1,15 +1,15 @@
 import Link from "next/link";
-import { FileText, QrCode, ArrowRight } from "lucide-react";
+import { FileText, Printer } from "lucide-react";
 
 /**
- * Kort for et gratis arbeidsark/PDF. QR-koden er en plassholder med intern
- * lenke til riktig side (PDF-ene lages senere).
+ * Kort for et gratis A4-arbeidsark. Lenker til en printvennlig HTML-side som
+ * kan skrives ut nå, og senere lastes ned som PDF.
  */
 export function PdfToolCard({
   title,
   description,
   href,
-  cta = "Gå til verktøyet",
+  cta = "Åpne og skriv ut",
 }: {
   title: string;
   description: string;
@@ -18,44 +18,33 @@ export function PdfToolCard({
 }) {
   return (
     <article className="card p-5 flex flex-col gap-4">
-      <div className="flex items-start justify-between gap-4">
-        <div className="min-w-0">
-          <span
-            aria-hidden
-            className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-warm-soft text-warm mb-3"
-          >
-            <FileText className="h-5 w-5" />
-          </span>
-          <h3 className="font-display text-lg text-ink tracking-display">
-            {title}
-          </h3>
-          <p className="mt-1.5 text-sm text-muted leading-relaxed">
-            {description}
-          </p>
-        </div>
-
-        <div
-          className="shrink-0 flex flex-col items-center gap-1"
-          aria-label="QR-kode kommer"
+      <div className="flex items-start justify-between gap-3">
+        <span
+          aria-hidden
+          className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-warm-soft text-warm"
         >
-          <span
-            aria-hidden
-            className="inline-flex h-16 w-16 items-center justify-center rounded-xl border border-dashed border-line bg-bg text-muted"
-          >
-            <QrCode className="h-7 w-7" />
-          </span>
-          <span className="text-[0.62rem] uppercase tracking-wide text-muted">
-            QR kommer
-          </span>
-        </div>
+          <FileText className="h-5 w-5" />
+        </span>
+        <span className="inline-flex items-center rounded-full bg-accent-soft px-3 py-1 text-xs font-semibold text-accent">
+          A4 · for utskrift
+        </span>
+      </div>
+
+      <div className="min-w-0">
+        <h3 className="font-display font-bold text-lg text-ink tracking-display">
+          {title}
+        </h3>
+        <p className="mt-1.5 text-sm text-muted leading-relaxed">
+          {description}
+        </p>
       </div>
 
       <Link
         href={href}
         className="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:underline underline-offset-4"
       >
+        <Printer aria-hidden className="h-4 w-4" />
         {cta}
-        <ArrowRight aria-hidden className="h-4 w-4" />
       </Link>
     </article>
   );

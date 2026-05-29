@@ -60,7 +60,9 @@ export default function GjeldsoversiktA4Page() {
         <PrintSheet
           title="Gjeldsoversikt"
           intro="Samle alle lån, kredittkort og smålån på ett ark. Sorter gjerne etter effektiv rente — den dyreste gjelden står øverst."
-          shortLink="lanekompass.no/gjeld"
+          shortLink="lånekompass.no/gjeld"
+          qrSrc="/qr/qr-gjeld.svg"
+          qrCaption="Skann for å åpne gjeldskalkulatoren og regne ut samlet gjeld."
           sourcesNote={
             <>
               Hvor finner du tallene? Logg inn på Gjeldsregisteret for samlet
@@ -98,7 +100,7 @@ export default function GjeldsoversiktA4Page() {
                       {COLS.map((c) => (
                         <td
                           key={c}
-                          className="border border-ink/20 px-2 py-3.5"
+                          className="border border-ink/20 px-2 py-3"
                           aria-hidden
                         />
                       ))}

@@ -68,7 +68,9 @@ export default function OkonomioversiktA4Page() {
         <PrintSheet
           title="Økonomioversikt"
           intro="Før opp inntekten din og de faste utgiftene dine, og regn ut hva du har igjen hver måned. Bruk blyant — det er lett å justere."
-          shortLink="lanekompass.no/tall"
+          shortLink="lånekompass.no/tall"
+          qrSrc="/qr/qr-tall.svg"
+          qrCaption="Står du fast? Skann for å se hvor du finner inntekt, faste utgifter og tallene du trenger."
           sourcesNote={
             <>
               Hvor finner du tallene? Se NAV (utbetalinger), lønnsslipp og

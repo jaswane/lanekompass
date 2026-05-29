@@ -9,6 +9,8 @@ export function PrintSheet({
   title,
   intro,
   shortLink,
+  qrSrc,
+  qrCaption,
   sourcesNote,
   children,
 }: {
@@ -16,6 +18,10 @@ export function PrintSheet({
   intro?: string;
   /** Kortlenke som vises ved QR-boksen, f.eks. "lanekompass.no/gjeld". */
   shortLink: string;
+  /** Statisk SVG-QR som peker til kortlenken (f.eks. "/qr/qr-gjeld.svg"). */
+  qrSrc?: string;
+  /** Kort forklaring under QR-koden («Skann for å …»). */
+  qrCaption?: string;
   /** Kort kilde-/hjelpetekst nederst. */
   sourcesNote: React.ReactNode;
   children: React.ReactNode;
@@ -64,27 +70,52 @@ export function PrintSheet({
             <p>{sourcesNote}</p>
           </div>
 
-          <QrBox shortLink={shortLink} />
+          <QrBox shortLink={shortLink} qrSrc={qrSrc} qrCaption={qrCaption} />
         </div>
       </footer>
     </div>
   );
 }
 
-/** QR-boks med kortlenke. Selve QR-bildet settes inn ved PDF-eksport. */
-export function QrBox({ shortLink }: { shortLink: string }) {
+/**
+ * QR-boks med kortlenke. Når `qrSrc` er satt vises den faktiske statiske
+ * QR-en (SVG fra /public/qr). Uten qrSrc faller den tilbake til et tomt
+ * ikon-felt (brukes ikke i produksjon nå, men beholdes for trygghet).
+ *
+ * Bredde 24mm = standard for trygg skanning på A4, ikke for stor.
+ */
+export function QrBox({
+  shortLink,
+  qrSrc,
+  qrCaption,
+}: {
+  shortLink: string;
+  qrSrc?: string;
+  qrCaption?: string;
+}) {
   return (
-    <div className="flex items-center gap-3 shrink-0">
-      <span
-        aria-hidden
-        className="inline-flex h-20 w-20 items-center justify-center rounded-lg border-2 border-ink/25 text-ink/40"
-      >
-        <QrCode className="h-12 w-12" />
-      </span>
-      <div className="text-xs text-ink/70 leading-tight">
-        <p className="font-semibold text-ink">Mer hjelp:</p>
-        <p className="mt-0.5">Skann eller skriv inn</p>
+    <div className="flex items-start gap-3 shrink-0">
+      {qrSrc ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={qrSrc}
+          alt={`QR-kode til ${shortLink}`}
+          width={91}
+          height={91}
+          className="block shrink-0 w-[24mm] h-[24mm]"
+        />
+      ) : (
+        <span
+          aria-hidden
+          className="inline-flex h-[24mm] w-[24mm] items-center justify-center rounded-lg border-2 border-ink/25 text-ink/40"
+        >
+          <QrCode className="h-12 w-12" />
+        </span>
+      )}
+      <div className="text-xs text-ink/70 leading-tight max-w-[52mm]">
+        <p className="font-semibold text-ink">Skann med mobilen</p>
         <p className="mt-0.5 font-mono text-sm text-ink">{shortLink}</p>
+        {qrCaption && <p className="mt-1.5 leading-snug">{qrCaption}</p>}
       </div>
     </div>
   );

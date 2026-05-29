@@ -87,7 +87,9 @@ export default function RyddeplanA4Page() {
         <PrintSheet
           title="7-dagers ryddeplan"
           intro="Ett lite steg om dagen i sju dager. Kryss av etter hvert — små steg som faktisk blir gjort, slår en perfekt plan som aldri starter."
-          shortLink="lanekompass.no/start"
+          shortLink="lånekompass.no/start"
+          qrSrc="/qr/qr-start.svg"
+          qrCaption="Skann for å følge 7 steg digitalt."
           sourcesNote={
             <>
               Trenger du å snakke med noen om gjeld? NAV tilbyr gratis økonomi-

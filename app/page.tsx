@@ -351,6 +351,13 @@ export default function HomePage() {
 
         <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2">
           <Link
+            href="/lan-forklart-enkelt"
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:underline underline-offset-4"
+          >
+            Les hele forklaringen
+            <ArrowRight aria-hidden className="h-4 w-4" />
+          </Link>
+          <Link
             href="/hvor-finner-du-tallene"
             className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:underline underline-offset-4"
           >

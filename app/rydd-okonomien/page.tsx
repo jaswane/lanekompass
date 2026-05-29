@@ -176,6 +176,16 @@ export default function RyddOkonomienPage() {
               </Link>
               .
             </p>
+            <p className="mt-1 text-sm text-muted">
+              Usikker på begrepene?{" "}
+              <Link
+                href="/lan-forklart-enkelt"
+                className="font-semibold text-accent hover:underline underline-offset-4"
+              >
+                Les Lån forklart enkelt
+              </Link>
+              .
+            </p>
           </div>
 
           <DisclaimerBox />

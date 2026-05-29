@@ -6,6 +6,7 @@ const COLUMNS = [
     heading: "Kom i gang",
     items: [
       { href: "/rydd-okonomien", label: "Rydd økonomien på 7 steg" },
+      { href: "/lan-forklart-enkelt", label: "Lån forklart enkelt" },
       { href: "/hvor-finner-du-tallene", label: "Hvor finner du tallene?" },
       { href: "/unngaa-lan", label: "Slik kan du unngå å låne" },
       { href: "/verktoy", label: "Gratis arbeidsark" },

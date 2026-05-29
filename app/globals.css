@@ -331,11 +331,20 @@ body {
   flex: none;
 }
 
+/* Skjules på skjerm, vises kun ved utskrift */
+.print-only {
+  display: none;
+}
+
 @media print {
   header,
   footer,
   .no-print {
     display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
   }
 
   html,

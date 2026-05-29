@@ -16,14 +16,16 @@ export function CalculatorShell({
 }) {
   return (
     <div className="space-y-6">
-      <p className="flex items-center gap-2 text-sm text-accent bg-accent-soft/50 border border-accent-soft rounded-xl px-4 py-2.5">
+      <p className="no-print flex items-center gap-2 text-sm text-accent bg-accent-soft/50 border border-accent-soft rounded-xl px-4 py-2.5">
         <Lock aria-hidden className="h-4 w-4 shrink-0" />
         {privacyNote}
       </p>
 
       {children}
 
-      <DisclaimerBox>{disclaimer}</DisclaimerBox>
+      <div className="no-print">
+        <DisclaimerBox>{disclaimer}</DisclaimerBox>
+      </div>
     </div>
   );
 }

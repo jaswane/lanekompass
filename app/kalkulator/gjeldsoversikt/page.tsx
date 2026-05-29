@@ -37,31 +37,37 @@ export default function GjeldsoversiktPage() {
         ]}
       />
 
-      <PageHeader
-        kicker="Kalkulator"
-        title="Gjeldsoversikt"
-        lede="Legg inn én linje per gjeldspost — kredittkort, forbrukslån, smålån og annet. Du ser samlet gjeld og hva du betaler hver måned. Ingenting lagres."
-        crumbs={CRUMBS}
-      />
+      <div className="no-print">
+        <PageHeader
+          kicker="Kalkulator"
+          title="Gjeldsoversikt"
+          lede="Legg inn én linje per gjeldspost — kredittkort, forbrukslån, smålån og annet. Du ser samlet gjeld og hva du betaler hver måned. Ingenting lagres."
+          crumbs={CRUMBS}
+        />
+      </div>
 
       <div className="narrow-container pb-10 space-y-8">
-        <WhereToFindBox
-          title="Vet du ikke restbeløp og renter?"
-          items={[
-            "Logg inn på Gjeldsregisteret.com med BankID — gratis oversikt over forbrukslån og kredittkort",
-            "Nedbetalingsplanen fra hver långiver viser restbeløp og effektiv rente",
-            "Kredittkortappen viser saldo og minste innbetaling",
-          ]}
-        />
+        <div className="no-print">
+          <WhereToFindBox
+            title="Vet du ikke restbeløp og renter?"
+            items={[
+              "Logg inn på Gjeldsregisteret.com med BankID — gratis oversikt over forbrukslån og kredittkort",
+              "Nedbetalingsplanen fra hver långiver viser restbeløp og effektiv rente",
+              "Kredittkortappen viser saldo og minste innbetaling",
+            ]}
+          />
+        </div>
 
         <CalculatorShell>
           <DebtOverview />
         </CalculatorShell>
 
-        <OfficialSourcesBox
-          ids={["gjeldsregisteret", "forbrukerradet", "finansportalen", "nav"]}
-          intro="Bruk offentlige kilder for å fylle inn riktige tall og forstå hva gjelden faktisk koster."
-        />
+        <div className="no-print">
+          <OfficialSourcesBox
+            ids={["gjeldsregisteret", "forbrukerradet", "finansportalen", "nav"]}
+            intro="Bruk offentlige kilder for å fylle inn riktige tall og forstå hva gjelden faktisk koster."
+          />
+        </div>
       </div>
     </>
   );

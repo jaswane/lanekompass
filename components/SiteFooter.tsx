@@ -81,23 +81,6 @@ export function SiteFooter({ currentYear }: { currentYear: number }) {
           <div className="font-display text-base text-ink">
             Lånekompass<span className="text-accent">.no</span>
           </div>
-          <nav
-            aria-label="Sekundærmeny"
-            className="flex flex-wrap gap-x-4 gap-y-1 justify-center"
-          >
-            <Link href="/om" className="hover:text-accent">
-              Om
-            </Link>
-            <Link href="/personvern" className="hover:text-accent">
-              Personvern
-            </Link>
-            <Link href="/ansvarsfraskrivelse" className="hover:text-accent">
-              Ansvarsfraskrivelse
-            </Link>
-            <Link href="/annonser-og-samarbeid" className="hover:text-accent">
-              Annonser og samarbeid
-            </Link>
-          </nav>
           <p className="max-w-2xl">
             © {currentYear} {SITE.name} · Et prosjekt fra{" "}
             <a

@@ -1,8 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import { Plus, Trash2 } from "lucide-react";
+import { Plus, Trash2, Printer, Compass } from "lucide-react";
 import { parseNorwegianNumber, formatKr } from "@/lib/format";
+
+function formatNumberCell(raw: string): string {
+  if (!raw) return "";
+  const n = parseNorwegianNumber(raw);
+  return Number.isFinite(n) ? formatKr(n) : "";
+}
 
 interface DebtRow {
   id: string;
@@ -43,6 +49,19 @@ function emptyRow(): DebtRow {
 
 export function DebtOverview() {
   const [rows, setRows] = useState<DebtRow[]>([emptyRow()]);
+  const [printDate, setPrintDate] = useState<string | null>(null);
+
+  const handlePrint = () => {
+    setPrintDate(
+      new Date().toLocaleDateString("nb-NO", {
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+      })
+    );
+    // La React rerendere med datoen før vi åpner print-dialogen
+    setTimeout(() => window.print(), 50);
+  };
 
   const update = (id: string, field: keyof DebtRow, value: string) => {
     setRows((prev) =>
@@ -66,7 +85,8 @@ export function DebtOverview() {
   const totalManedlig = sum("manedligBetaling") + sum("gebyrer");
 
   return (
-    <div className="space-y-6">
+    <>
+    <div className="no-print space-y-6">
       <div className="space-y-5">
         {rows.map((row, i) => (
           <fieldset key={row.id} className="card p-4 sm:p-5">
@@ -246,6 +266,125 @@ export function DebtOverview() {
           </div>
         </div>
       </div>
+
+      <button
+        type="button"
+        onClick={handlePrint}
+        className="btn-primary w-full justify-center"
+      >
+        <Printer aria-hidden className="h-4 w-4" />
+        Skriv ut / lagre som PDF
+      </button>
+
+      <p className="text-xs text-muted text-center">
+        Print eller lagre som PDF rett fra nettleseren. Tallene sendes ingen
+        steder.
+      </p>
     </div>
+
+    {/* Print-only: ryddig gjeldsrapport som vises kun ved utskrift */}
+    <div className="print-only">
+      <div className="print-sheet rounded-2xl border border-line shadow-card p-8 sm:p-10">
+        <div className="flex items-center justify-between gap-4 border-b border-ink/15 pb-4">
+          <div className="flex items-center gap-2 text-ink/70">
+            <span
+              aria-hidden
+              className="inline-flex h-7 w-7 items-center justify-center rounded-lg border border-ink/20"
+            >
+              <Compass className="h-4 w-4" />
+            </span>
+            <span className="text-sm font-semibold tracking-tight">
+              Lånekompass.no
+            </span>
+          </div>
+          <span className="text-xs text-ink/60">
+            {printDate ? `Dato: ${printDate}` : "Gjeldsrapport"}
+          </span>
+        </div>
+
+        <header className="pt-5">
+          <h2 className="font-display font-bold text-3xl tracking-display text-ink">
+            Min gjeldsoversikt
+          </h2>
+        </header>
+
+        <table className="w-full border-collapse text-sm mt-5">
+          <thead>
+            <tr>
+              <th className="border border-ink/25 px-2 py-1.5 text-left text-xs font-semibold uppercase tracking-wide text-ink/70">
+                Kreditor
+              </th>
+              <th className="border border-ink/25 px-2 py-1.5 text-left text-xs font-semibold uppercase tracking-wide text-ink/70">
+                Type
+              </th>
+              <th className="border border-ink/25 px-2 py-1.5 text-right text-xs font-semibold uppercase tracking-wide text-ink/70">
+                Restbeløp
+              </th>
+              <th className="border border-ink/25 px-2 py-1.5 text-right text-xs font-semibold uppercase tracking-wide text-ink/70">
+                Eff. rente
+              </th>
+              <th className="border border-ink/25 px-2 py-1.5 text-right text-xs font-semibold uppercase tracking-wide text-ink/70">
+                Pr. måned
+              </th>
+              <th className="border border-ink/25 px-2 py-1.5 text-left text-xs font-semibold uppercase tracking-wide text-ink/70">
+                Forfall
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((r) => (
+              <tr key={r.id}>
+                <td className="border border-ink/20 px-2 py-2">
+                  {r.navn || "—"}
+                </td>
+                <td className="border border-ink/20 px-2 py-2">{r.type}</td>
+                <td className="border border-ink/20 px-2 py-2 text-right tabular">
+                  {formatNumberCell(r.restbelop)}
+                </td>
+                <td className="border border-ink/20 px-2 py-2 text-right tabular">
+                  {r.effektivRente ? `${r.effektivRente} %` : ""}
+                </td>
+                <td className="border border-ink/20 px-2 py-2 text-right tabular">
+                  {formatNumberCell(r.manedligBetaling)}
+                </td>
+                <td className="border border-ink/20 px-2 py-2">
+                  {r.forfall || ""}
+                </td>
+              </tr>
+            ))}
+            <tr>
+              <td
+                className="border border-ink/25 px-2 py-3 text-sm font-semibold text-ink"
+                colSpan={2}
+              >
+                Sum
+              </td>
+              <td className="border border-ink/25 px-2 py-3 text-right font-semibold text-ink tabular">
+                {formatKr(totalGjeld)}
+              </td>
+              <td className="border border-ink/25 px-2 py-3" aria-hidden />
+              <td className="border border-ink/25 px-2 py-3 text-right font-semibold text-ink tabular">
+                {formatKr(totalManedlig)}
+              </td>
+              <td className="border border-ink/25 px-2 py-3" aria-hidden />
+            </tr>
+          </tbody>
+        </table>
+
+        <p className="text-xs text-ink/55 mt-2">
+          «Pr. måned» inkluderer månedlige gebyrer. Type = kredittkort,
+          forbrukslån, smålån, billån, inkasso m.m.
+        </p>
+
+        <footer className="mt-6 border-t border-ink/15 pt-4 text-xs text-ink/70 leading-relaxed">
+          <p className="font-medium text-ink/80">
+            Tallene er fylt inn lokalt i nettleseren din. Lånekompass.no mottar
+            eller lagrer ikke informasjonen.
+          </p>
+          <p className="mt-2 font-mono text-sm text-ink">lånekompass.no/gjeld</p>
+        </footer>
+      </div>
+    </div>
+    </>
   );
 }
